@@ -4,3 +4,5 @@ __pycache__/
 .ipynb_checkpoints/
 data/corpora/
 results/*.json
+*.tgz
+_to_delete/
