@@ -4,10 +4,6 @@ Source code for **"Neural dynamical systems on ferroelectric compute-in-memory f
 
 FerroNDS is a neural dynamical system that pairs bandpass oscillator and leaky integrator primitives with a multi-bit ferrodiode (FeD) synaptic weighting circuit for real-time signal prediction on analog compute-in-memory hardware.
 
-> Neural dynamical systems are expressive temporal predictors that capture continuous-time dynamics through fine-grained state updates. However, this sequential structure maps poorly onto digital hardware optimized for dense matrix operations, a mismatch that analog neuromorphic computing, with its native continuous-time dynamics, can resolve. We introduce FerroNDS, a neuromorphic system built from two analog primitives: an integrator for temporal accumulation and an oscillator for frequency-selective filtering. We map this system onto compute-in-memory hardware based on multi-bit ferrodiodes. A 48-unit FerroNDS bank computes a short-time Fourier transform whose spectrogram correlates at 0.93 with a Hann reference, while a 32-unit instance forecasts frequency and fault power at horizons from 14.5 to 228.5 ms and chaotic dynamics over a rollout of 10 Lyapunov times. Both results use behavioral models of the analog primitives, fitted and validated against LTspice traces of the full circuit. The system achieves sub-watt, real-time operation with per-neuron per-inference energy of 82.9–89.5 nJ (200 Hz) and 14.7–14.8 nJ (10 kHz), with per-layer latency of 3.18 ms (200 Hz) and 63.66 µs (10 kHz). To our knowledge, this is the first end-to-end integration of a ferrodiode into a neuromorphic computational framework, establishing ferroelectric compute-in-memory as a practical substrate for analog neural dynamical systems.
-
-This repository holds the device and circuit models, oscillator bank, hardware-mapped readout, and baselines the paper compares against.
-
 ## Requirements
 
 - Python 3.10+
@@ -22,7 +18,7 @@ pip install torch scikit-learn          # baselines
 
 ## Repository structure
 
-### `ferronds/analog` — devices and circuits
+### `ferronds/analog` (devices and circuits)
 
 | File | Description |
 |---|---|
@@ -33,7 +29,7 @@ pip install torch scikit-learn          # baselines
 | `transistors.py` | NMOS rectifier and differential pair written as circuits, with ideal square law alongside for comparison. |
 | `nonlinearity.py` | Two nonlinearities the circuit already has, expanded into feature channels. |
 
-### `ferronds/dynamics` — the computation
+### `ferronds/dynamics` (computation)
 
 | File | Description |
 |---|---|
@@ -43,7 +39,7 @@ pip install torch scikit-learn          # baselines
 | `autoregressive.py` | Streaming front-end and closed-loop rollout used for chaotic function prediction. |
 | `spectral_tasks.py` | Tasks whose target is property of the spectrum, i.e., fault power and frequency tracking. |
 
-### `ferronds/data` — signals and corpora
+### `ferronds/data` (signals and corpora)
 
 | File | Description |
 |---|---|
@@ -52,7 +48,7 @@ pip install torch scikit-learn          # baselines
 | `keyword_spotting.py` | Google Speech Commands v2, standard 12-class split. |
 | `keyword_spotting_frontend.py` | FerroNDS and log-mel front-ends at readout held to fixed width. |
 
-### `ferronds/baselines` — the comparison
+### `ferronds/baselines` (comparison)
 
 | File | Description |
 |---|---|
