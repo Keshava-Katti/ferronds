@@ -110,7 +110,7 @@ for f in (200, 10_000):
   author  = {Katti, Keshava and Selvakumar, Adithya and Chaudhari, Pratik
              and Jariwala, Deep},
   year    = {2026},
-  note    = {Submitted}
+  note    = {Under Revision}
 }
 ```
 
